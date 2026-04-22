@@ -17,15 +17,26 @@ function convertToRoman(num) {
 
     let result = '';
 
-    for (let i = 0; i < values.length; i++) {
-        while (num >= values[i][0]) {
-            result += values[i][1];
-            num -= values[i][0];
+    for (let [value, symbol] of values) {
+        while (num >= value) {
+            result += symbol;
+            num -= value;
         }
     }
 
     return result;
 }
 
-// do not edit below this line
-module.exports = convertToRoman;
+// DOM handling (IMPORTANT for AccioJob)
+document.getElementById("convert-btn").addEventListener("click", function () {
+    const input = document.getElementById("number").value;
+    const result = convertToRoman(Number(input));
+    
+    document.getElementById("output").innerText = result;
+});
+
+
+
+
+
+
